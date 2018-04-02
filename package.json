@@ -1,13 +1,17 @@
 {
-  "name": "ap-ui",
-  "version": "0.1.0",
-  "author": "niuxiaolong <1873076690@qq.com> ",
+  "name": "sinosoft-ap-ui",
+  "version": "1.0.0",
+  "author": "cliernxl <1873076690@qq.com> ",
   "description": "ap-ui",
   "keywords": [
     "hanger",
     "vue",
     "components"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cliernxl/ap-ui.git"
+  },
   "private": false,
   "main": "dist/ap-ui.min.js",
   "scripts": {

@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <button @click="doImgSrc">base64</button>
-    <img :src="srcData" style="width: 300px;height: 300px;"/>
-    <cropper ref="cropper" :options="options" @finishData="setData" @realTime="getData"></cropper>
-    <div class="show-preview" :style="{'width': previews.w + 'px', 'height': previews.h + 'px',  'overflow': 'hidden', 'margin': '5px'}">
-      <div :style="previews.div">
-        <img :src="previews.url" :style="previews.img">
-      </div>
+  <div align="left">
+    <h3>Demo</h3>
+    <div class="cropper-d">
+      <cropper ref="cropper" :options="options" @finishData="setData" @realTime="getData"></cropper>
+    </div>
+    <div class="button-d" @click="doImgSrc">
+      生成base64
+    </div>
+    <div class="base-img">
+      <img :src="srcData" />
     </div>
   </div>
 </template>
@@ -19,16 +21,15 @@
           imgHeight: 500,
           imgWidth: 500
         },
-        previews: {},
         srcData: '',
       }
     },
     methods: {
-      setData(val){
+      setData(val) {
         this.srcData = val;
       },
-      doImgSrc(){
-        this.$refs.cropper.finish('base64',this.srcData);
+      doImgSrc() {
+        this.$refs.cropper.finish('base64', this.srcData);
       },
       getData(data) {
         console.log(data.img.height);
@@ -38,24 +39,42 @@
         console.log(`x:${x}  y:${y}`)
         console.log(data.h);
         console.log(data.w);
-        this.previews = data;
       }
     }
   }
 </script>
 <style>
-  .btns {
-    width: 100%;
-    height: 30px;
+  .cropper-d {
+    width: 500px;
+    height: 500px;
+    float: left;
   }
 
-  .btns div {
-    width: 100px;
+  .button-d {
+    width: 120px;
+    height: 30px;
+    margin: 15px;
+    line-height: 30px;
+    background-color: rgb(89, 89, 250);
+    border-radius: 4px;
+    border: 1px solid rgb(46, 46, 163);
     color: #fff;
     cursor: pointer;
     text-align: center;
     float: left;
-    height: 30px;
-    background-color: blue;
+  }
+
+  .base-img {
+    float: left;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    line-height: 150px;
+    box-shadow: 0 0 3px #c9c9c9;
+  }
+
+  .base-img img {
+    max-height: 150px;
+    max-width: 150px;
   }
 </style>

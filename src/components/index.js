@@ -1,8 +1,6 @@
-import loading from './loading/index.js';
 import cropper from './cropper/index.js';
 
 const components = [
-  loading,
   cropper
 ];
 
@@ -19,6 +17,5 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   version: '1.0.1',
   install,
-  loading,
   cropper
 };
