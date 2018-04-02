@@ -1,5 +1,9 @@
 <template>
-  <div align="left">
+  <div align="left" class="wrap">
+    <h3>引用</h3>
+    <div class="code">
+      &lt;cropper ref="cropper" :options="options"&gt;&lt;/cropper&gt;
+    </div>
     <h3>Demo</h3>
     <div class="cropper-d">
       <cropper ref="cropper" :options="options" @finishData="setData" @realTime="getData"></cropper>
@@ -44,6 +48,18 @@
   }
 </script>
 <style>
+  h3 {
+    margin: 10px 0;
+  }
+
+  .wrap .code {
+    line-height: 30px;
+    font-size: 13px;
+    background-color: #dcdcdc;
+    border: 1px solid #a8a8a8;
+    padding: 0 5px;
+  }
+
   .cropper-d {
     width: 500px;
     height: 500px;
