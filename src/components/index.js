@@ -1,7 +1,9 @@
 import cropper from './cropper/index.js';
+import form from './form/index.js';
 
 const components = [
-  cropper
+  cropper,
+  form
 ];
 
 const install = function (Vue, opts = {}) {
@@ -17,5 +19,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   version: '1.0.1',
   install,
-  cropper
+  cropper,
+  form
 };

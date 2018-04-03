@@ -2,7 +2,7 @@
   <div id="home" :style="{'height': `${clientHeight}px`}">
     <div class="head" align="center">
       <div>
-        <span>ap-ui&nbsp;组件库</span>
+        <span>sinosoft-ap-ui&nbsp;组件库</span>
       </div>
     </div>
 

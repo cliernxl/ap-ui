@@ -22,7 +22,6 @@
 <script>
 
   export default {
-    name: 'el-loading',
     data() {
       return {
         data: {}
