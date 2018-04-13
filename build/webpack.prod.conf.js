@@ -40,9 +40,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       sourceMap: true
     }),
-    // extract css into its own file
     new ExtractTextPlugin({
-      // filename: utils.assetsPath('css/[name].[contenthash].css')
        filename: 'ap-ui.min.css'
     }),
     new OptimizeCSSPlugin()

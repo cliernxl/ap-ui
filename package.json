@@ -1,6 +1,6 @@
 {
   "name": "sinosoft-ap-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "cliernxl <1873076690@qq.com> ",
   "description": "ap-ui",
   "keywords": [
@@ -21,6 +21,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "element-ui": "^2.3.2",
     "jquery": "^3.3.1",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
@@ -28,6 +29,7 @@
     "underscore": "^1.8.3",
     "vue": "^2.5.2",
     "vue-cropper": "^0.2.9",
+    "vue-quill-editor": "^3.0.5",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

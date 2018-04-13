@@ -39,14 +39,14 @@
     created() {
       this.option = {
         img: this.options.img || 'http://ofyaji162.bkt.clouddn.com/bg12.jpg',//图片地址
-        info: this.options.info || true, //裁剪框大小显示
+        info: this.options.info ? true : false, //裁剪框大小显示
         size: this.options.size || 1, //裁剪生成图片的质量
         outputType: this.options.outputType || 'jpeg', //jpeg || png || webp
-        canScale: this.options.canScale || true,// 图片是否允许滚动缩放
-        autoCrop: this.options.autoCrop || true,//是否默认生成截图框
+        canScale: this.options.canScale ? true : false,// 图片是否允许滚动缩放
+        autoCrop: this.options.autoCrop ? true : false,//是否默认生成截图框
         autoCropWidth: this.options.autoCropWidth || 300,
         autoCropHeight: this.options.autoCropHeight || 250,
-        fixed: this.options.fixed || false,//是否开启截图框宽高固定比例
+        fixed: this.options.fixed ? true : false,//是否开启截图框宽高固定比例
         imgHeight: this.options.imgHeight || 600,
         imgWidth: this.options.imgWidth || 900
       }
@@ -75,12 +75,12 @@
         if (type === 'blob') {
           this.$refs.ucropper.getCropBlob((data) => {
             srcData = window.URL.createObjectURL(data)
-            this.$emit('finishData',srcData);
+            this.$emit('finishData', srcData);
           })
         } else {
           this.$refs.ucropper.getCropData((data) => {
             srcData = data
-            this.$emit('finishData',srcData);
+            this.$emit('finishData', srcData);
           })
         }
       },

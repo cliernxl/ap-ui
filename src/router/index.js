@@ -4,6 +4,7 @@ const Index = () => import('@/examples/index.vue');
 const Use = () => import('@/examples/lib/use.vue');
 const Cropper = () => import('@/examples/lib/cropper.vue');
 const Form = () => import('@/examples/lib/form.vue');
+const Editor = () => import('@/examples/lib/editor.vue');
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
           path: '/form',
           name: 'ap-form',
           component: Form
+        },
+        {
+          path: '/editor',
+          name: 'ap-editor',
+          component: Editor
         }
       ]
     }

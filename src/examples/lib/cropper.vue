@@ -23,7 +23,8 @@
         options: {
           img: 'http://ofyaji162.bkt.clouddn.com/touxiang.jpg',
           imgHeight: 500,
-          imgWidth: 500
+          imgWidth: 500,
+          autoCrop: false,
         },
         srcData: '',
       }

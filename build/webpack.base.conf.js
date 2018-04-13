@@ -59,11 +59,13 @@ module.exports = {
         loader: ExtractTextPlugin.extract(
           "style-loader",
           "css-loader"
-        )
+        ),
+        exclude: /node_modules/
       },
       {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader"),
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
