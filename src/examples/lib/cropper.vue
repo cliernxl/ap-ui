@@ -11,6 +11,12 @@
     <div class="button-d" @click="doImgSrc">
       生成base64
     </div>
+    <div class="button-d" @click="$refs.cropper.startCrop()">
+      开始截图
+    </div>
+    <div class="button-d" @click="$refs.cropper.stopCrop()">
+      停止截图
+    </div>
     <div class="base-img">
       <img :src="srcData" />
     </div>
@@ -27,7 +33,23 @@
           autoCrop: false,
         },
         srcData: '',
+        // imgSrc: 'http://192.168.120.81:8083/group2/M00/04/B5/wKh4VFrVud2AKJgvAAEJPZmL72w944.jpg'
       }
+    },
+    mounted() {
+      // var img2 = new Image,
+      //   canvas = document.createElement("canvas"),
+      //   ctx = canvas.getContext("2d");
+      // img2.src = this.imgSrc;
+
+      // img2.crossOrigin = "Anonymous";
+
+      // img2.onload = function () {
+      //   canvas.width = img2.width;
+      //   canvas.height = img2.height;
+      //   ctx.drawImage(img2, 0, 0);
+      //   console.log(canvas.toDataURL("image/png"));
+      // }
     },
     methods: {
       setData(val) {
@@ -37,13 +59,13 @@
         this.$refs.cropper.finish('base64', this.srcData);
       },
       getData(data) {
-        console.log(data.img.height);
-        console.log(data.img.width);
+        // console.log(data.img.height);
+        // console.log(data.img.width);
         let x = data.img.transform.split('translate3d(')[1].split(',')[0].split('p')[0];
         let y = data.img.transform.split('translate3d(')[1].split(',')[1].split('p')[0];
-        console.log(`x:${x}  y:${y}`)
-        console.log(data.h);
-        console.log(data.w);
+        // console.log(`x:${x}  y:${y}`)
+        // console.log(data.h);
+        // console.log(data.w);
       }
     }
   }

@@ -1,11 +1,17 @@
 import cropper from './cropper/index.js';
 import editor from './editor/index.js';
 import ueditor from './ueditor/index.js';
+import screen from './screen/index.js';
+import video from './video/index.js';
+import audio from './audio/index.js';
 
 const components = [
   cropper,
   editor,
-  ueditor
+  ueditor,
+  screen,
+  video,
+  audio
 ];
 
 const install = function (Vue, opts = {}) {
@@ -23,5 +29,8 @@ export default {
   install,
   cropper,
   editor,
-  ueditor
+  ueditor,
+  screen,
+  video,
+  audio
 };

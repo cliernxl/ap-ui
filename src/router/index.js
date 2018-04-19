@@ -5,6 +5,9 @@ const Use = () => import('@/examples/lib/use.vue');
 const Cropper = () => import('@/examples/lib/cropper.vue');
 const Form = () => import('@/examples/lib/form.vue');
 const Editor = () => import('@/examples/lib/editor.vue');
+const Screen = () => import('@/examples/lib/screen.vue');
+const Video = () => import('@/examples/lib/video.vue');
+const Audio = () => import('@/examples/lib/audio.vue');
 
 Vue.use(Router);
 
@@ -36,6 +39,21 @@ export default new Router({
           path: '/editor',
           name: 'ap-editor',
           component: Editor
+        },
+        {
+          path: '/screen',
+          name: 'ap-screen',
+          component: Screen
+        },
+        {
+          path: '/video',
+          name: 'ap-video',
+          component: Video
+        },
+        {
+          path: '/audio',
+          name: 'ap-audio',
+          component: Audio
         }
       ]
     }
