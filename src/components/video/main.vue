@@ -1,7 +1,7 @@
 <style lang="less" src="./style.less"></style>
 <template>
   <div align="left" class="ap-video">
-    <div id="ap_video"></div>
+    <div :id="options.id + 'ap_video'"></div>
     <div :style="{'width': options.outWidth}" class="slider-box" v-if="isScreen">
       <el-slider ref="sliderVideo" v-model="allTime" :max="maxSlider" range show-stops @change="formatTooltip">
       </el-slider>
@@ -28,20 +28,29 @@
       return {
         videoWrap: null,
         video: null,
-        allTime: [0,0],
+        allTime: [0, 0],
         maxSlider: 10,
-        oldTime: [0,0]
+        oldTime: [0, 0]
       }
+    },
+    watch: {
+      'options.url': 'loadFile'
     },
     mounted() {
       this.init();
     },
     methods: {
+      loadFile() {
+        this.video.setVideoInfo(' ', this.options.url, 0);
+      },
+      onPause(){
+        this.video.videoPlayPause();
+      },
       init() {
         let self = this;
-        self.videoWrap = document.getElementById('ap_video')
+        self.videoWrap = document.getElementById(self.options.id + 'ap_video')
         self.video = new Dvideo({
-          ele: '#ap_video',
+          ele: '#' + self.options.id + 'ap_video',
           title: self.options.title,
           nextVideoExtend: function () {
             self.$emit('next');
@@ -69,18 +78,18 @@
             self.video.showLoading(false)
           },
         });
-        setTimeout(function(){
+        setTimeout(function () {
           self.maxSlider = Math.floor(self.video.durationT);
           self.allTime[1] = Math.floor(self.video.durationT);
           self.oldTime[1] = Math.floor(self.video.durationT);
-        },300);
+        }, 300);
       },
-      formatTooltip(val){
+      formatTooltip(val) {
         let self = this;
         self.pause();
-        if(self.oldTime[0] != val[0]){
+        if (self.oldTime[0] != val[0]) {
           self.video.setVideoProcess(val[0]);
-        }else if(self.oldTime[1] != val[1]){
+        } else if (self.oldTime[1] != val[1]) {
           self.video.setVideoProcess(val[1]);
         }
         self.oldTime = val;

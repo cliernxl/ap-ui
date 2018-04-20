@@ -6,10 +6,9 @@
   </div>
 </template>
 <script>
-  // import "../../../static/niuniu/jquery.md5.js";
-  // import "../../../static/niuniu/jquery.json-2.3.min.js";
-  // import "../../../static/niuniu/niuniucapture.js";
-  // import "../../../static/niuniu/capturewrapper.js";
+  import "../../../static/niuniu/jquery.md5.js";
+  import "../../../static/niuniu/jquery.json-2.3.min.js";
+  import "../../../static/niuniu/niuniucapture.js";
   export default {
     name: 'ap-screen',
     props: {
@@ -36,15 +35,15 @@
     },
     methods: {
       init() {
-        if (isMacintosh()) {
-          self.downloadUrl = 'http://www.ggniu.cn/download/CaptureInstall.dmg';
-        }
+        // if (isMacintosh()) {
+        //   self.downloadUrl = 'http://www.ggniu.cn/download/CaptureInstall.dmg';
+        // }
         let self = this;
         self.captureObj = new NiuniuCaptureObject();
         self.captureObj.NiuniuAuthKey = "niuniu";
         //此处可以设置相关参数 
-        self.captureObj.TrackColor = rgb2value(255, 0, 0);
-        self.captureObj.EditBorderColor = rgb2value(0, 0, 255);
+        self.captureObj.TrackColor = self.captureObj.rgb2value(255, 0, 0);
+        self.captureObj.EditBorderColor = self.captureObj.rgb2value(0, 0, 255);
         self.captureObj.WatermarkTextValue = ' ';
         self.captureObj.MagnifierLogoText = " "
         //设置工具栏的TOOLTIP  
@@ -93,9 +92,9 @@
       startCapture() {
         var captureRet = this.capture();
         //从返回值来解析显示  	
-        if (captureRet == emCaptureFailed) {
+        if (captureRet == this.captureObj.emCaptureFailed) {
           this.ShowDownLoad();
-        } else if (captureRet == emCaptureUnknown) {
+        } else if (captureRet == this.captureObj.emCaptureUnknown) {
           this.ShowDownLoad();
         }
       },

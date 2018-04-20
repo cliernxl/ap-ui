@@ -17,8 +17,8 @@
       </div>
       <div class="audio-btn">
         <div class="audio-select">
-          <div action="play" data-on="icon-play" data-off="icon-pause" class="icon-play"></div>
-          <div action="volume" class="icon-volume-up">
+          <div action="play" data-on="icon iconfont icon-bofang" data-off="icon iconfont icon-zanting" class="icon iconfont icon-bofang"></div>
+          <div action="volume" class="icon iconfont icon-shengyin">
             <div class="audio-set-volume">
               <div class="volume-box">
                 <i>
@@ -106,6 +106,9 @@
           self.audioFn.schedule(true,val[1]);
         }
         self.oldTime = val;
+      },
+      play(flag){
+        this.audioFn.play(flag);
       },
     }
   }

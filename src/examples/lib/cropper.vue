@@ -31,6 +31,7 @@
           imgHeight: 500,
           imgWidth: 500,
           autoCrop: false,
+          canScale: true
         },
         srcData: '',
         // imgSrc: 'http://192.168.120.81:8083/group2/M00/04/B5/wKh4VFrVud2AKJgvAAEJPZmL72w944.jpg'

@@ -5,6 +5,7 @@
 
 /*******************************************************************************/
 //设置截图的参数  
+(function (window, document) {
 var emPensize = 1;		//设置画笔大小
 var emDrawType = 2;		//设置是腾讯风格还是360风格 0： 腾讯风格   1： 360风格
 var emTrackColor = 3;		//自动识别的边框的颜色
@@ -28,9 +29,6 @@ var emClosed = 1;
 var emConnected = 2;
 var emConnecting = 3;
 
-var emCaptureSuccess = 0;
-var emCaptureFailed = 1;
-var emCaptureUnknown = 2;
 
 var emCmdReady = -1;
 var emCmdCapture = 0;
@@ -51,9 +49,12 @@ function onpluginLoaded() {
 	captureObjSelf.pluginLoaded();
 }
 
-function NiuniuCaptureObject() {
+var NiuniuCaptureObject = function () {
 	var self = this;
 	captureObjSelf = this;
+	this.emCaptureSuccess = 0;
+	this.emCaptureFailed = 1;
+	this.emCaptureUnknown = 2;
 	this.PenSize = 2;
 	this.DrawType = 0;
 	this.TrackColor = rgb2value(255, 0, 0);
@@ -96,7 +97,7 @@ function NiuniuCaptureObject() {
 	this.VersionCallback = null;
 	this.OnConnectFailed = function (isReconnect) {
 		self.WriteLog(isReconnect ? "reconnect failed, the capture control process is exit." : "connect failed at the first time.");
-	}
+	};
 
 	this.LoadPlugin = function () {
 		var obj = $('#capturecontainer');
@@ -116,6 +117,10 @@ function NiuniuCaptureObject() {
 
 	this.niuniuCapture = function () {
 		return document.getElementById('niuniuCapture');
+	}
+
+	this.rgb2value = function (r, g, b) {
+		return r | g << 8 | b << 16;
 	}
 
 	this.addEvent = function (obj, name, func) {
@@ -263,15 +268,17 @@ function NiuniuCaptureObject() {
 		}
 
 		if (!self.pluginValid()) {
-			return emCaptureFailed;
+			return self.emCaptureFailed;
 		}
 		self.niuniuCapture().Capture(name, hide, AutoCapture, x, y, width, height);
-		return emCaptureSuccess;
+		return self.emCaptureSuccess;
 	}
 
 	this.InitNiuniuCapture = function () {
 		self.LoadPlugin();
-		setTimeout("captureObjSelf.InitWebSocketAndBindCallback();", 200);
+		setTimeout(function(){
+			self.InitWebSocketAndBindCallback();
+		}, 200);
 	}
 
 	this.InitWebSocketAndBindCallback = function () {
@@ -346,12 +353,16 @@ function NiuniuCaptureObject() {
 					self.IsEverConnected = true;
 					self.IsFirstConnect = false;
 					if (self.IsWaitCustomizedCallBack) {
-						setTimeout("captureObjSelf.SendReadyRecvData();", 3);
+						setTimeout(function(){
+							self.SendReadyRecvData();
+						}, 3);
 					}
 					self.WriteLog("connect sucess.");
 					self.ReceivedEchoBack = true;
 					clearInterval(self.TimeIntervalID);
-					self.TimeIntervalID = setInterval("captureObjSelf.LoopEchoMessage()", 3000);
+					self.TimeIntervalID = setInterval(function(){
+						self.LoopEchoMessage()
+					}, 3000);
 				}
 				if (id == "1") {
 					//解析消息 
@@ -435,7 +446,9 @@ function NiuniuCaptureObject() {
 			}
 		}
 
-		self.TimeOutID = setTimeout("captureObjSelf.connectHost();", 800);
+		self.TimeOutID = setTimeout(function(){
+			self.connectHost();
+		}, 800);
 	}
 
 	this.LoopEchoMessage = function () {
@@ -443,7 +456,9 @@ function NiuniuCaptureObject() {
 			self.OnWebSocketError("this.LoopEchoMessage, !self.ReceivedEchoBack");
 			self.ReceivedEchoBack = false;
 			clearInterval(self.TimeIntervalID);
-			self.TimeIntervalID = setInterval("captureObjSelf.LoopEchoMessage()", 3000);
+			self.TimeIntervalID = setInterval(function(){
+				self.LoopEchoMessage()
+			}, 3000);
 			return;
 		}
 		self.ReceivedEchoBack = false;
@@ -486,15 +501,15 @@ function NiuniuCaptureObject() {
 
 				self.IsWaitCustomizedCallBack = true;
 				self.connectHost();
-				return emCaptureUnknown;
+				return self.emCaptureUnknown;
 			}
 
-			return emCaptureSuccess;
+			return self.emCaptureSuccess;
 		}
 		catch (e) {
 			alert(e.message);
 		}
-		return emCaptureUnknown;
+		return self.emCaptureUnknown;
 	}
 
 
@@ -563,3 +578,5 @@ function NiuniuCaptureObject() {
 		self.WriteLog(verSion);
 	}
 }
+window.NiuniuCaptureObject = NiuniuCaptureObject;
+})(window, document)

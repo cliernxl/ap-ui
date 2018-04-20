@@ -28,7 +28,7 @@
 			autoplay: false,
 
 			// 控制栏显示隐藏动画的 时间
-			ctrSpeedDuration: 3000,
+			ctrSpeedDuration: 32000,
 
 			// 是否自动循环
 			loop: true,
@@ -322,7 +322,7 @@
 		updateFullScreenState: function (bool) {
 			this.isFull = bool || false
 			// 全屏图标样式
-			var iconClassName = this.isFull ? 'Dvideo-menu-fullscreenConfig icon-canclefullscreen' : 'Dvideo-menu-fullscreenConfig icon-fullscreen'
+			var iconClassName = this.isFull ? 'icon iconfont icon-quanping' : 'icon iconfont icon-quanping'
 			// 文案
 			var title = this.isFull ? '取消全屏' : '全屏'
 			this.fullscreenConfig.className = iconClassName
@@ -509,12 +509,12 @@
 				this.updatePorgress()
 			}
 		},
-		setVideoProcess(currentStr) {
+		setVideoProcess: function (currentStr) {
 			this.currentT = currentStr
 			this.videoEle.currentTime = this.currentT
 			this.updatePorgress()
 		},
-		getAllTime(){
+		getAllTime: function () {
 			var _this = this;
 			return _this.formartTime(_this.durationT)
 		},
@@ -913,7 +913,7 @@
 
 				_this.videoEle.onplaying = function () {
 					_this.isPlaying = true
-					_this.videoPlayPauseI.className = 'Dvideo-ctrl-playPause icon-pause'
+					_this.videoPlayPauseI.className = 'icon iconfont icon-zanting'
 					_this.videoPlayPauseI.title = '暂停 space'
 					var date = new Date()
 					_this.reduceTBefore = Date.parse(date) - Math.floor(_this.videoEle.currentTime * 1000)
@@ -922,7 +922,7 @@
 				},
 				_this.videoEle.onpause = function () {
 					_this.isPlaying = false
-					_this.videoPlayPauseI.className = 'Dvideo-ctrl-playPause icon-play'
+					_this.videoPlayPauseI.className = 'icon iconfont icon-bofang'
 					_this.videoPlayPauseI.title = '播放 space'
 					_this.onPause()
 				},
@@ -1070,7 +1070,7 @@
 			// 放大缩小功能
 			var iconFullScreenITitle = this.isFull ? '全屏' : '取消全屏'
 			this.fullscreenConfig = document.createElement('i')
-			this.fullscreenConfig.className = 'Dvideo-menu-fullscreenConfig icon-fullscreen'
+			this.fullscreenConfig.className = 'icon iconfont icon-quanping'
 			this.fullscreenConfig.title = iconFullScreenITitle
 			this.menuRightC.appendChild(this.fullscreenConfig)
 			// 初始全屏效果
@@ -1094,10 +1094,10 @@
 			this.videoCtrlDetail.appendChild(this.videoCtrlStateC)
 
 			// 播放按钮
-			var iconPlayPauseClass = this.isPlaying ? 'icon-pause' : 'icon-play'
+			var iconPlayPauseClass = this.isPlaying ? 'icon-zanting' : 'icon-bofang'
 			var iconPlayPauseITitle = this.isPlaying ? '暂停 space' : '播放 space'
 			this.videoPlayPauseI = document.createElement('i')
-			this.videoPlayPauseI.className = 'Dvideo-ctrl-playPause ' + iconPlayPauseClass
+			this.videoPlayPauseI.className = 'icon iconfont ' + iconPlayPauseClass
 			this.videoPlayPauseI.title = iconPlayPauseITitle
 			this.videoCtrlStateC.appendChild(this.videoPlayPauseI)
 

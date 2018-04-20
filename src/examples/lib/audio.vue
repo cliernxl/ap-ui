@@ -16,7 +16,8 @@
     },
     methods: {
       getData() {
-        alert(`开始：${this.$refs.apAudio.allTime[0]}，结束：${this.$refs.apAudio.allTime[1]}`);
+        // alert(`开始：${this.$refs.apAudio.allTime[0]}，结束：${this.$refs.apAudio.allTime[1]}`);
+        this.$refs.apAudio.play(false)
       },
     }
   }
