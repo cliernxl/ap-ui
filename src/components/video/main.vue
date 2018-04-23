@@ -44,7 +44,7 @@
         this.video.setVideoInfo(' ', this.options.url, 0);
       },
       onPause(){
-        this.video.videoPlayPause();
+        this.video.videoPause();
       },
       init() {
         let self = this;
