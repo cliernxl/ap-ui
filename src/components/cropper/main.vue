@@ -36,6 +36,11 @@
         }
       }
     },
+    watch: {
+      "options.img":function(){
+        this.option.img = this.options.img;
+      }
+    },
     created() {
       this.option = {
         img: this.options.img || 'http://ofyaji162.bkt.clouddn.com/bg12.jpg',//图片地址

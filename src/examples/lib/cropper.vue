@@ -17,6 +17,9 @@
     <div class="button-d" @click="$refs.cropper.stopCrop()">
       停止截图
     </div>
+    <div class="button-d" @click="changeImgUrl">
+      改变地址
+    </div>
     <div class="base-img">
       <img :src="srcData" />
     </div>
@@ -30,7 +33,7 @@
           img: 'http://ofyaji162.bkt.clouddn.com/touxiang.jpg',
           imgHeight: 500,
           imgWidth: 500,
-          autoCrop: false,
+          autoCrop: true,
           canScale: true
         },
         srcData: '',
@@ -53,6 +56,9 @@
       // }
     },
     methods: {
+      changeImgUrl(){
+        this.options.img = 'http://192.168.120.81:8083/group2/M00/04/B5/wKh4VFrVud2AKJgvAAEJPZmL72w944.jpg';
+      },
       setData(val) {
         this.srcData = val;
       },
