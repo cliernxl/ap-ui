@@ -41,13 +41,14 @@
 
 .audio-backs {
     position: relative;
-    padding-left: 54px;
-    padding-right: 50px;
+    padding-left: 7px;
+    padding-right: 90px;
     height: 20px;
 }
 
 .audio-this-time,
-.audio-count-time {
+.audio-count-time,
+.audio-this-hua {
     position: absolute;
     top: 0;
     width: 50px;
@@ -57,9 +58,12 @@
 }
 
 .audio-this-time {
-    left: 0;
+    right: 35px;
 }
-
+.audio-this-hua{
+    width: 3px;
+    right: 39px;
+}
 .audio-count-time {
     right: 0;
     text-align: right;
@@ -132,8 +136,10 @@
 
 .audio-select>div {
     position: relative;
-    width: 20px;
+    width: 26px;
     height: 20px;
+    line-height: 18px;
+    font-size: 20px;
     background-size: 100% 100%;
     background-position: center center;
     background-repeat: no-repeat;

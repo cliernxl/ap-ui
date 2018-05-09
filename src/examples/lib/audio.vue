@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div style="width: 300px;">
     <el-button @click="getData">获取数据</el-button>
-    <ap-audio ref="apAudio" :options="options1" :isScreen="true"></ap-audio>
+    <ap-audio ref="apAudio" :options="options1" :isScreen="false" :ishowVoice="false" :ishowProcess="true"></ap-audio>
   </div>
 </template>
 <script>
@@ -10,7 +10,8 @@
       return {
         options1: {
           src: 'http://jq22com.qiniudn.com/jq22m1.mp3',
-          id: 'apAudio1'
+          id: 'apAudio1',
+
         }
       }
     },
