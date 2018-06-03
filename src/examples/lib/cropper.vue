@@ -20,8 +20,15 @@
     <div class="button-d" @click="changeImgUrl">
       改变地址
     </div>
-    <div class="base-img">
-      <img :src="srcData" />
+    <div  class="base-img">
+      <img id="bigImg" src="http://ofyaji162.bkt.clouddn.com/touxiang.jpg"/>
+      <div id="bigBox" style="border: 1px solid #000">
+        <div>
+          <img :src="srcData" id="smallImg"/>
+        </div>
+      </div>
+
+      
     </div>
   </div>
 </template>
@@ -34,26 +41,22 @@
           imgHeight: 500,
           imgWidth: 500,
           autoCrop: true,
-          canScale: true
+          canMove: true,
+          original: true,
+          full: true,
+          canScale: true,
+          info: true
         },
         srcData: '',
-        // imgSrc: 'http://192.168.120.81:8083/group2/M00/04/B5/wKh4VFrVud2AKJgvAAEJPZmL72w944.jpg'
+        datax: {
+          w: '',
+          h: '',
+        }
       }
     },
     mounted() {
-      // var img2 = new Image,
-      //   canvas = document.createElement("canvas"),
-      //   ctx = canvas.getContext("2d");
-      // img2.src = this.imgSrc;
-
-      // img2.crossOrigin = "Anonymous";
-
-      // img2.onload = function () {
-      //   canvas.width = img2.width;
-      //   canvas.height = img2.height;
-      //   ctx.drawImage(img2, 0, 0);
-      //   console.log(canvas.toDataURL("image/png"));
-      // }
+      
+        
     },
     methods: {
       changeImgUrl(){
@@ -61,18 +64,28 @@
       },
       setData(val) {
         this.srcData = val;
+        let img = new Image();
+        img.src = this.srcData;
+        let self = this;
+        img.onload = function(){
+          self.datax.w = img.width;
+          self.datax.h = img.height;
+        }
       },
       doImgSrc() {
         this.$refs.cropper.finish('base64', this.srcData);
       },
       getData(data) {
-        // console.log(data.img.height);
-        // console.log(data.img.width);
-        let x = data.img.transform.split('translate3d(')[1].split(',')[0].split('p')[0];
-        let y = data.img.transform.split('translate3d(')[1].split(',')[1].split('p')[0];
-        // console.log(`x:${x}  y:${y}`)
-        // console.log(data.h);
-        // console.log(data.w);
+        document.getElementById('bigImg').style.transform = 'scale(' + data.scale + ',' + data.scale + ')'
+        + 'translate3d('+ (data.x / data.scale)  + 'px,' + (data.y / data.scale) + 'px,' + '0)';
+
+        document.getElementById('bigBox').style.width = data.w + 'px';
+        document.getElementById('bigBox').style.height = data.h + 'px';
+
+        document.getElementById('smallImg').style.width = data.cropW + 'px';
+        document.getElementById('smallImg').style.height = data.cropH + 'px';
+        document.getElementById('smallImg').style.transform = 'translate3d('+ data.cropOffsertX  + 'px,' + data.cropOffsertY + 'px,' + '0)';
+        
       }
     }
   }
@@ -111,16 +124,45 @@
   }
 
   .base-img {
-    float: left;
-    width: 150px;
-    height: 150px;
-    text-align: center;
-    line-height: 150px;
     box-shadow: 0 0 3px #c9c9c9;
+    width: 100%;
+    margin-top:600px;
+    margin-bottom: 20px;
+    min-width: 640px;
+    min-height: 640px;
+    position: relative;
   }
-
-  .base-img img {
-    max-height: 150px;
-    max-width: 150px;
+  .base-img img{
+    position: absolute;
+  }
+  .base-img #bigBox{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .base-img #bigBox div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .base-img #bigBox1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .base-img #bigBox1 div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  #smallImg{
+    border: 1px solid #000;
+  }
+  #smallImg1{
+    border: 1px solid #000;
   }
 </style>

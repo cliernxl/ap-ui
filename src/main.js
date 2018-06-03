@@ -14,7 +14,6 @@ import '../static/ueditor/UE/ueditor.parse.min.js';
 Vue.use(ElementUI);
 Vue.use(plugin);
 Vue.config.productionTip = false;
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

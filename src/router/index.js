@@ -3,6 +3,7 @@ import Router from 'vue-router';
 const Index = () => import('@/examples/index.vue');
 const Use = () => import('@/examples/lib/use.vue');
 const Cropper = () => import('@/examples/lib/cropper.vue');
+const Cropperjs = () => import('@/examples/lib/cropperjs.vue');
 const Form = () => import('@/examples/lib/form.vue');
 const Editor = () => import('@/examples/lib/editor.vue');
 const Screen = () => import('@/examples/lib/screen.vue');
@@ -29,6 +30,11 @@ export default new Router({
           path: '/cropper',
           name: 'cropper',
           component: Cropper
+        },
+        {
+          path: '/cropperjs',
+          name: 'cropperjs',
+          component: Cropperjs
         },
         {
           path: '/form',

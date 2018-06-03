@@ -1,4 +1,5 @@
 import cropper from './cropper/index.js';
+import cropperjs from './cropperjs/index.js';
 import editor from './editor/index.js';
 import ueditor from './ueditor/index.js';
 import screen from './screen/index.js';
@@ -7,6 +8,7 @@ import audio from './audio/index.js';
 
 const components = [
   cropper,
+  cropperjs,
   editor,
   ueditor,
   screen,
@@ -28,6 +30,7 @@ export default {
   version: '1.0.1',
   install,
   cropper,
+  cropperjs,
   editor,
   ueditor,
   screen,
