@@ -149,5 +149,7 @@
     line-height: 30px;
     background-color: #dedede;
     width: 100%;
+    z-index: 999999;
+    text-align: center;
   }
 </style>

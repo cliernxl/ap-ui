@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :style="{'height': options.height + 'px','width': options.width + 'px'}">
       <img id="image" :src="options.img" alt="Picture">
     </div>
   </template>
