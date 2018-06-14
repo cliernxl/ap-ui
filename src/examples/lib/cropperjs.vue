@@ -56,7 +56,7 @@
           this.w = data.width;
         },
         changeImgUrl(){
-          this.$refs.cropper.changeImgUrl('http://ofyaji162.bkt.clouddn.com/touxiang.jpg');
+          this.options.img = 'http://192.168.120.101:8315/6da64920c38efe0c130cacb9a5388bb4.jpg';
         }
       }
     }

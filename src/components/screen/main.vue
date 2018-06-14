@@ -94,7 +94,7 @@
         //从返回值来解析显示  	
         if (captureRet == this.captureObj.emCaptureFailed) {
           this.ShowDownLoad();
-        } else if (captureRet == this.captureObj.emCaptureUnknown) {
+        } else if (captureRet == this.captureObj.emCaptureUnknown) {alert(2)
           this.ShowDownLoad();
         }
       },
