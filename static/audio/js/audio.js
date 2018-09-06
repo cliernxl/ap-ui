@@ -97,7 +97,7 @@
 		//音频结束时
 		control.onended = function () {
 
-			fn.switch(true);
+			// fn.switch(true);
 		}
 
 		//进度条拖拽
@@ -276,7 +276,6 @@
 					elem.thisSetbacks.style.width = percentage(control.currentTime / control.duration);
 
 					elem.thisTime.innerText = conversion(control.currentTime);
-					
 				}, 1000);
 			} else {
 

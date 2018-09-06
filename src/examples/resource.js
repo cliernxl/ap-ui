@@ -5,5 +5,7 @@ export default [
   { name: '富文本框', path: '/editor' },
   { name: '截屏工具', path: '/screen' },
   { name: '视频截取', path: '/video' },
-  { name: '音频截取', path: '/audio' }
+  { name: '音频截取', path: '/audio' },
+  { name: '粘贴截屏', path: '/pasteScreen' },
+  { name: '鼠标方向特效', path: '/direction' }
 ];

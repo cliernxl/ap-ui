@@ -9,6 +9,8 @@ const Editor = () => import('@/examples/lib/editor.vue');
 const Screen = () => import('@/examples/lib/screen.vue');
 const Video = () => import('@/examples/lib/video.vue');
 const Audio = () => import('@/examples/lib/audio.vue');
+const PasteScreen = () => import('@/examples/lib/pasteScreen.vue');
+const Direction = () => import('@/examples/lib/direction.vue');
 
 Vue.use(Router);
 
@@ -60,6 +62,16 @@ export default new Router({
           path: '/audio',
           name: 'ap-audio',
           component: Audio
+        },
+        {
+          path: '/pasteScreen',
+          name: 'ap-pasteScreen',
+          component: PasteScreen
+        },
+        {
+          path: '/direction',
+          name: 'ap-direction',
+          component: Direction
         }
       ]
     }

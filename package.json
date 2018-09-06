@@ -1,6 +1,6 @@
 {
   "name": "sinosoft-ap-ui",
-  "version": "1.0.23",
+  "version": "1.0.26",
   "author": "cliernxl <1873076690@qq.com> ",
   "description": "ap-ui",
   "keywords": [
@@ -61,6 +61,7 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
+    "jsignature": "^2.1.2",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.5.3",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
@@ -77,8 +78,10 @@
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",
+    "vue-quill-editor": "^3.0.6",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
+    "vue-ueditor-wrap": "^1.3.6",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
